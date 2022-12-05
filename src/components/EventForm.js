@@ -2,6 +2,8 @@ import React, { useReducer, useState } from 'react'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import { CREATE_EVENT, DELETE_ALL_EVENTS } from '../actions'
+
 const EventForm = ({ state, dispatch }) => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
@@ -9,7 +11,7 @@ const EventForm = ({ state, dispatch }) => {
     const addEvent = e => {
         e.preventDefault()
 
-        dispatch({ type: 'CREATE_EVENT', title, body })
+        dispatch({ type: CREATE_EVENT, title, body })
             setTitle('')
             setBody('')
     }
@@ -17,7 +19,7 @@ const EventForm = ({ state, dispatch }) => {
     const deleteAllEvents = e => {
         e.preventDefault()
         const result = window.confirm('全てのイベントを本当に削除しても良いですか？')
-        if (result) dispatch({ type: 'DELETE_ALL_EVENTS' })
+        if (result) dispatch({ type: DELETE_ALL_EVENTS })
     }
 
     const unCreatable = title === '' || body === ''
