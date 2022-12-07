@@ -1,21 +1,18 @@
-import { 
-  ADD_OPERATION_LOG,
-  DELETE_ALL_OPERATION_LOGS   
-} from '../actions'
+import { ADD_OPERATION_LOG, DELETE_ALL_OPERATION_LOGS } from '../actions';
 
 const operationLogs = (state = [], action) => {
   switch (action.type) {
     case ADD_OPERATION_LOG:
-      const operationLog = { 
+      const operationLog = {
         description: action.description,
-        operatedAt: action.operatedAt
-      }
-      return [operationLog ,...state]
+        operatedAt: action.operatedAt,
+      };
+      return [operationLog, ...state];
     case DELETE_ALL_OPERATION_LOGS:
-      return []
+      return [];
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default operationLogs
+export default operationLogs;
